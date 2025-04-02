@@ -1,6 +1,10 @@
 # Python-server
 
 ![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=for-the-badge)
+![GitHub License](https://img.shields.io/github/license/fuydg/Python-server?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/fuydg/Python-server?style=for-the-badge&logo=github&color=%23fbb612)
+![GitHub Release](https://img.shields.io/github/v/release/fuydg/Python-server?style=for-the-badge&logo=github&color=%233170a7)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/fuydg/Python-server)
 
 A simple Python utility program. Used to start a server site preview locally
 
