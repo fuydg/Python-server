@@ -6,15 +6,15 @@ A simple Python utility program. Used to start a server site preview locally
 
 ## Running
 
-- Install *python* and Install *git*
+- Install **python*^ and Install **git**
 
-- Clone the project locally using git
+- Clone the project locally using **git**
 
 ```bash
 git clone https://github.com/fuydg/Python-server.git
 ```
 
-- *cd* to project
+- **cd** to project
 
 ```bash
 cd Python-server
