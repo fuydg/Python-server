@@ -6,7 +6,7 @@ A simple Python utility program. Used to start a server site preview locally
 
 ## Running
 
-- Install **python*^ and Install **git**
+- Install **python** and Install **git**
 
 - Clone the project locally using **git**
 
