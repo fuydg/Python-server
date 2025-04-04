@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马里奥游戏</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #gameCanvas {
+            边框: 1像素实线黑色;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // 马里奥的起始位置和速度
+            let 马里奥x = 100;
+            let 马里奥y = canvas.height - 50;
+            let 马里奥速度x = 0;
+            let 马里奥速度y = 0;
+            let 马里奥宽度 = 30;
+            let 马里奥高度 = 30;
+            let 重力 = 0.5;
+
+            // 管道
+            let 管道 = [
+                { x: 300, y: canvas.height - 100, width: 50, height: 100 },
+                { x: 600, y: canvas.height - 150, width: 50, height: 150 }
+            ];
+
+            // 键盘输入
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    马里奥速度x = 5;
+                }
+                if (e.key === 'ArrowLeft') {
+                    马里奥速度x = -5;
+                }
+                if (e.key === 'ArrowUp' && 马里奥y === canvas.height - 50) {
+                    马里奥速度y = -10;
+                }
+            });
+
+            document.addEventListener('keyup', (e) => {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    马里奥速度x = 0;
+                }
+            });
+
+            // 游戏循环
+            function 更新() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // 绘制马里奥
+                ctx.fillStyle ='red';
+                ctx.fillRect(马里奥x, 马里奥y, 马里奥宽度, 马里奥高度);
+
+                // 更新马里奥位置
+                马里奥x += 马里奥速度x;
+                马里奥y += 马里奥速度y;
+                马里奥速度y += 重力;
+
+                // 与地面碰撞
+                if (马里奥y + 马里奥高度 > canvas.height - 50) {
+                    马里奥y = canvas.height - 50 - 马里奥高度;
+                    马里奥速度y = 0;
+                }
+
+                // 与管道碰撞
+                for (let i = 0; i < 管道.length; i++) {
+                    if (checkCollision(马里奥x, 马里奥y, 马里奥宽度, 马里奥高度, 管道[i].x, 管道[i].y, 管道[i].width, 管道[i].height)) {
+                        // 管道碰撞逻辑
+                        马里奥x = 管道[i].x - 马里奥宽度;
+                        马里奥速度x = 0;
+                    }
+                }
+
+                // 绘制管道
+                for (let i = 0; i < 管道.length; i++) {
+                    ctx.fillStyle = 'green';
+                    ctx.fillRect(管道[i].x, 管道[i].y, 管道[i].width, 管道[i].height);
+                }
+
+                requestAnimationFrame(更新);
+            }
+
+            // 碰撞检测
+            function checkCollision(ax, ay, aw, ah, bx, by, bw, bh) {
+                if (ax + aw > bx && ax < bx + bw && ay + ah > by && ay < by + bh) {
+                    return true;
+                }
+                return false;
+            }
+
+            更新();
+        });
+    </script>
+</body>
+</html>

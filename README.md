@@ -8,6 +8,9 @@
 
 A simple Python utility program. Used to start a server site preview locally
 
+> [!TIP]
+> This is an open source project, and you can contribute to the project, ask questions, and rebuild and redistribute the open source code. Please note that this is just a practice project.
+
 ## Running
 
 - Install **python** and Install **git**
