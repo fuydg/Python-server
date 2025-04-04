@@ -2,7 +2,7 @@ site_name: Python-server
 site_url: https://Python-server.nry2025.xyz
 theme:
   name: material
-  language: zh
+  language: en
   icon:
     repo: fontawesome/brands/github
   palette:
